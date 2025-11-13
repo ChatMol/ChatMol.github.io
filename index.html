@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,26 +10,35 @@
     <style>
         body {
             font-family: 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', sans-serif;
-            background-color: #f8fafc; /* bg-slate-50 */
-            color: #1e293b; /* bg-slate-800 */
+            background-color: #f8fafc;
+            /* bg-slate-50 */
+            color: #1e293b;
+            /* bg-slate-800 */
         }
+
         /* Style for the active navigation link */
         .nav-link.active {
-            background-color: #eff6ff; /* bg-blue-50 */
-            color: #1d4ed8; /* text-blue-700 */
+            background-color: #eff6ff;
+            /* bg-blue-50 */
+            color: #1d4ed8;
+            /* text-blue-700 */
             font-weight: 600;
         }
+
         /* Add scroll margin to all sections for proper anchor linking */
         section {
-            scroll-margin-top: 4rem; /* Adjust as needed */
+            scroll-margin-top: 4rem;
+            /* Adjust as needed */
         }
+
         /* Layout: make main occupy remaining space next to fixed sidebar and center inner content */
         main#main-content {
             margin-left: 0;
             width: 100%;
             min-height: 100vh;
             display: flex;
-            justify-content: center; /* center inner container horizontally */
+            justify-content: center;
+            /* center inner container horizontally */
             align-items: flex-start;
             box-sizing: border-box;
         }
@@ -36,7 +46,8 @@
         /* For md and up, account for sidebar width (16rem for w-64) */
         @media (min-width: 768px) {
             main#main-content {
-                margin-left: 16rem; /* matches sidebar w-64 */
+                margin-left: 16rem;
+                /* matches sidebar w-64 */
                 width: calc(100% - 16rem);
             }
         }
@@ -44,7 +55,8 @@
         /* Inner wrapper that constrains content and centers it inside the remaining space */
         .content-wrapper {
             width: 100%;
-            max-width: 80rem; /* similar to Tailwind's max-w-7xl */
+            max-width: 80rem;
+            /* similar to Tailwind's max-w-7xl */
             padding: 2rem;
             box-sizing: border-box;
         }
@@ -56,505 +68,595 @@
         }
     </style>
 </head>
+
 <body class="flex">
 
     <!-- Sidebar Navigation -->
-    <nav id="sidebar" class="w-64 h-screen fixed top-0 left-0 bg-white border-r border-slate-200 p-6 shadow-sm hidden md:block">
+    <nav id="sidebar"
+        class="w-64 h-screen fixed top-0 left-0 bg-white border-r border-slate-200 p-6 shadow-sm hidden md:block">
         <h1 class="text-2xl font-bold text-blue-700 mb-10">ChatMol</h1>
         <ul class="space-y-2">
-            <li><a href="#home" class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">首页</a></li>
-            <li><a href="#about" class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">关于我们</a></li>
-            <li><a href="#problem" class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">行业痛点</a></li>
-            <li><a href="#solution" class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">解决方案</a></li>
-            <li><a href="#product-copilot" class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">ChatMol Copilot</a></li>
-            <li><a href="#product-gromacs" class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">GROMACS Copilot</a></li>
-            <li><a href="#value" class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">核心价值</a></li>
-            <li><a href="#model" class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">商业模式</a></li>
-            <li><a href="#roadmap" class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">未来蓝图</a></li>
-            <li><a href="#contact" class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">联系我们</a></li>
+            <li><a href="#home"
+                    class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">首页</a>
+            </li>
+            <li><a href="#about"
+                    class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">关于我们</a>
+            </li>
+            <li><a href="#problem"
+                    class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">行业痛点</a>
+            </li>
+            <li><a href="#solution"
+                    class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">解决方案</a>
+            </li>
+            <li><a href="#product-copilot"
+                    class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">ChatMol
+                    Copilot</a></li>
+            <li><a href="#product-gromacs"
+                    class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">GROMACS
+                    Copilot</a></li>
+            <li><a href="#value"
+                    class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">核心价值</a>
+            </li>
+            <li><a href="#model"
+                    class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">商业模式</a>
+            </li>
+            <li><a href="#roadmap"
+                    class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">未来蓝图</a>
+            </li>
+            <li><a href="#contact"
+                    class="nav-link text-slate-600 hover:text-slate-900 font-medium w-full block rounded-md px-3 py-2">联系我们</a>
+            </li>
         </ul>
     </nav>
 
     <!-- Main Content Area -->
     <main id="main-content" class="flex-1 md:ml-64 p-8 md:p-16">
         <div class="content-wrapper">
-        
-        <!-- Section: Home -->
-        <section id="home" class="min-h-[80vh] flex flex-col justify-center py-20">
-            <h1 class="text-6xl md:text-8xl font-extrabold text-slate-900 mb-6">ChatMol</h1>
-            <h2 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-600 mb-8">
-                AI 驱动的生物计算革命
-            </h2>
-            <p class="text-2xl text-slate-600 max-w-3xl">
-                一个为生物信息学与药物研发打造的 AI 原生操作系统。
-            </p>
-        </section>
 
-        <!-- Section: About Us -->
-        <section id="about" class="py-20">
-            <h2 class="text-4xl font-bold mb-12 border-b-4 border-blue-600 pb-4 inline-block">关于我们：ChatMol</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="space-y-6 text-lg text-slate-700">
-                    <p class="text-2xl font-semibold text-slate-900">ChatMol 是一个多元化的团队，成员来自国内外顶尖科研机构。</p>
-                    <p>我们的使命是利用大语言模型（LLM）与 AI Agent 技术，彻底打破生物信息学与药物研发的工具壁垒，将最前沿的计算能力赋能给每一位科研人员。</p>
-                    <ul class="list-none space-y-4">
-                        <li class="flex items-start">
-                            <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
-                            <span><strong>技术渊源</strong>：始于 PyMOL，我们最早将自然语言引入分子可视化，解决了传统命令行工具（CMD）复杂难学的第一大痛点。</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
-                            <span><strong>团队构成</strong>：由资深的生物信息学专家、计算化学家与 AIDD 工程师组成。</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-xl text-center border-t-4 border-blue-500">
-                        <span class="text-5xl font-extrabold text-blue-700">800+</span>
-                        <p class="text-lg text-slate-600 mt-2">GitHub Stars</p>
-                        <p class="text-sm text-slate-500">(核心项目)</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-xl text-center border-t-4 border-blue-500">
-                        <span class="text-5xl font-extrabold text-blue-700">10+</span>
-                        <p class="text-lg text-slate-600 mt-2">社区开发者</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-xl text-center border-t-4 border-blue-500">
-                        <span class="text-5xl font-extrabold text-blue-700">3+</span>
-                        <p class="text-lg text-slate-600 mt-2">核心开源</p>
-                        <p class="text-sm text-slate-500">项目</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Problem -->
-        <section id="problem" class="py-20 bg-slate-100 rounded-3xl my-16 p-8 md:p-12">
-            <h2 class="text-4xl font-bold mb-12 text-center">行业痛点：科研中的“隐形”壁垒</h2>
-            <p class="text-xl text-center text-slate-600 mb-12 max-w-3xl mx-auto">我们精准定位到生物医药研发中两个长期存在的、成本高昂的痛点：</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Pain Point 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-200 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                    <h3 class="text-3xl font-bold mt-4 mb-6 text-center">👩‍🔬 实验科学家的“门槛”</h3>
-                    <ul class="list-disc list-outside text-lg text-slate-700 space-y-3 pl-6">
-                        <li><strong>工具“黑盒”</strong>：想用 AlphaFold, ProteinMPNN，但不会编程。</li>
-                        <li><strong>软件“高墙”</strong>：PyMOL, GROMACS, Schrödinger 等软件学习曲线陡峭。</li>
-                        <li><strong>效率低下</strong>：文献调研、数据分析、结果可视化耗时费力。</li>
-                    </ul>
-                </div>
-                <!-- Pain Point 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-200 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                    <h3 class="text-3xl font-bold mt-4 mb-6 text-center">👨‍💻 计算科学家的“重复”</h3>
-                    <ul class="list-disc list-outside text-lg text-slate-700 space-y-3 pl-6">
-                        <li><strong>重复劳动</strong>：80% 的时间用于数据预处理、格式转换、参数配置。</li>
-                        <li><strong>“祖传”经验</strong>：MD 模拟“炼丹”，参数设置高度依赖个人经验，难以标准化。</li>
-                        <li><strong>任务堵塞</strong>：长时任务（如 MD）占用大量计算资源与人力监控。</li>
-                    </ul>
-                </div>
-            </div>
-            <p class="text-center text-2xl font-semibold text-red-700 mt-12">
-                <strong>核心问题：</strong> 昂贵的前沿工具与一线科研人员之间，存在一道巨大的鸿沟。
-            </p>
-        </section>
-
-        <!-- Section: Solution -->
-        <section id="solution" class="py-20 text-center">
-            <h2 class="text-4xl font-bold mb-8">解决方案</h2>
-            <h3 class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-600 mb-10">AI 原生的生物计算平台</h3>
-            <p class="text-2xl text-slate-700 max-w-4xl mx-auto mb-10">
-                ChatMol 提供了一个<strong class="font-bold text-slate-900">AI 原生的生物计算“操作系统”</strong>。
-                我们以<strong class="font-bold text-slate-900">自然语言</strong>为交互核心，<strong class="font-bold text-slate-900">AI Agent</strong>为执行驱动，将复杂的计算工具“服务化”，让科研人员可以专注于“科研”本身，而不是“工具”。
-            </p>
-            <div class="bg-white p-8 rounded-2xl shadow-lg inline-block border border-slate-200">
-                <h3 class="text-2xl font-semibold text-slate-800 mb-4">当前两大核心产品：</h3>
-                <ul class="text-xl text-left space-y-2">
-                    <li><span class="font-semibold text-blue-600">   ChatMol Copilot</span></li>
-                    <li><span class="font-semibold text-blue-600">   GROMACS Copilot</span></li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Section: Product 1 - Co-pilot -->
-        <section id="product-copilot" class="py-20">
-            <h2 class="text-4xl font-bold mb-12 border-b-4 border-blue-600 pb-4 inline-block">ChatMol Copilot</h2>
-            
-            <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 mb-10">
-                <p class="text-xl text-slate-600 mb-6">
-                    <strong>概览：</strong> 一个集成了多种生信与 AI 工具的对话式平台。用户通过聊天，即可完成从数据获取、分子处理到高级 AI 预测的复杂任务。
+            <!-- Section: Home -->
+            <section id="home" class="min-h-[80vh] flex flex-col justify-center py-20">
+                <h1 class="text-6xl md:text-8xl font-extrabold text-slate-900 mb-6">ChatMol</h1>
+                <h2
+                    class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-600 mb-8">
+                    AI 驱动的生物计算革命
+                </h2>
+                <p class="text-2xl text-slate-600 max-w-3xl">
+                    一个为生物信息学与药物研发打造的 AI 原生操作系统。
                 </p>
-            </div>
+            </section>
 
-            <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 mb-10">
-                <h3 class="text-2xl font-semibold text-slate-800 mb-6">产品架构 (Architecture)</h3>
-                <div class="mb-6">
-                    <img src="png/chatmol_framework.png" alt="ChatMol Copilot 产品架构" class="w-full rounded-lg shadow-md border border-slate-200">
+            <!-- Section: About Us -->
+            <section id="about" class="py-20">
+                <h2 class="text-4xl font-bold mb-12 border-b-4 border-blue-600 pb-4 inline-block">关于我们：ChatMol</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="space-y-6 text-lg text-slate-700">
+                        <p class="text-2xl font-semibold text-slate-900">ChatMol 是一个多元化的团队，成员来自国内外顶尖科研机构。</p>
+                        <p>我们的使命是利用大语言模型（LLM）与 AI Agent 技术，彻底打破生物信息学与药物研发的工具壁垒，将最前沿的计算能力赋能给每一位科研人员。</p>
+                        <ul class="list-none space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
+                                <span><strong>技术渊源</strong>：我们最早将自然语言引入分子可视化，解决了传统命令行工具（CMD）复杂难学的第一大痛点。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
+                                <span><strong>团队构成</strong>：由资深的机器学习专家、计算化学家与 AIDD 工程师组成。</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-2xl shadow-xl text-center border-t-4 border-blue-500">
+                            <span class="text-5xl font-extrabold text-blue-700">800+</span>
+                            <p class="text-lg text-slate-600 mt-2">GitHub Stars</p>
+                            <p class="text-sm text-slate-500">(核心项目)</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-xl text-center border-t-4 border-blue-500">
+                            <span class="text-5xl font-extrabold text-blue-700">10+</span>
+                            <p class="text-lg text-slate-600 mt-2">社区开发者</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-xl text-center border-t-4 border-blue-500">
+                            <span class="text-5xl font-extrabold text-blue-700">3+</span>
+                            <p class="text-lg text-slate-600 mt-2">核心开源</p>
+                            <p class="text-sm text-slate-500">项目</p>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-lg text-slate-600 mt-4">
-                    ChatMol Copilot 采用先进的 <strong class="text-blue-700">LLM + Tools</strong> 架构，通过自然语言理解用户意图，智能调度后端工具链，实现从简单的分子可视化到复杂的 AI 预测任务的无缝衔接。
-                </p>
-            </div>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div>
+                        <img src="png/ChatMol_copilot_paper.png" alt="ChatMol Copilot ACL 2024 L+M Workshop Oral"
+                            class="w-full rounded-lg shadow-md border border-slate-200">
+                        <p class="text-sm text-slate-600 mt-3 text-center">ChatMol copilot</p>
+                    </div>
+                    <div>
+                        <img src="png/presentation.jpg" alt="ChatMol 团队演讲截图"
+                            class="w-full rounded-lg shadow-md border border-slate-200">
+                        <p class="text-sm text-slate-600 mt-3 text-center">ChatMol 团队在顶级人工智能会议ACL 2024演讲</p>
+                    </div>
+                    <div>
+                        <img src="png/Pymolfold_paper.png" alt="Pymolfold 相关论文截图"
+                            class="w-full rounded-lg shadow-md border border-slate-200">
+                        <p class="text-sm text-slate-600 mt-3 text-center">Pymolfold</p>
+                    </div>
+                </div>
+            </section>
 
-            <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 mb-10">
-                <h3 class="text-2xl font-semibold text-slate-800 mb-6">产品演示 (Demo)</h3>
-                
-                <!-- 第一行视频 -->
-                <div class="mb-8">
-                    <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                        <h4 class="text-lg font-semibold text-slate-800 mb-3">演示一：蛋白序列设计</h4>
-                        <video controls class="w-full rounded-lg shadow-md" poster="">
-                            <source src="png/chatmol_design.mp4" type="video/mp4">
-                            您的浏览器不支持视频播放。
-                        </video>
+            <!-- Section: Problem -->
+            <section id="problem" class="py-20 bg-slate-100 rounded-3xl my-16 p-8 md:p-12">
+                <h2 class="text-4xl font-bold mb-12 text-center">行业痛点：科研中的“隐形”壁垒</h2>
+                <p class="text-xl text-center text-slate-600 mb-12 max-w-3xl mx-auto">我们精准定位到生物医药研发中两个长期存在的、成本高昂的痛点：</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Pain Point 1 -->
+                    <div
+                        class="bg-white p-8 rounded-2xl shadow-xl border border-slate-200 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <h3 class="text-3xl font-bold mt-4 mb-6 text-center">👩‍🔬 实验科学家的“门槛”</h3>
+                        <ul class="list-disc list-outside text-lg text-slate-700 space-y-3 pl-6">
+                            <li><strong>工具“黑盒”</strong>：想用 AlphaFold, ProteinMPNN，但不会编程。</li>
+                            <li><strong>软件“高墙”</strong>：PyMOL, GROMACS, Schrödinger 等软件学习曲线陡峭。</li>
+                            <li><strong>效率低下</strong>：文献调研、数据分析、结果可视化耗时费力。</li>
+                        </ul>
+                    </div>
+                    <!-- Pain Point 2 -->
+                    <div
+                        class="bg-white p-8 rounded-2xl shadow-xl border border-slate-200 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <h3 class="text-3xl font-bold mt-4 mb-6 text-center">👨‍💻 计算科学家的“重复”</h3>
+                        <ul class="list-disc list-outside text-lg text-slate-700 space-y-3 pl-6">
+                            <li><strong>重复劳动</strong>：80% 的时间用于数据预处理、格式转换、参数配置。</li>
+                            <li><strong>“祖传”经验</strong>：MD 模拟“炼丹”，参数设置高度依赖个人经验，难以标准化。</li>
+                            <li><strong>任务堵塞</strong>：长时任务（如 MD）占用大量计算资源与人力监控。</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-center text-2xl font-semibold text-red-700 mt-12">
+                    <strong>核心问题：</strong> 昂贵的前沿工具与一线科研人员之间，存在一道巨大的鸿沟。
+                </p>
+            </section>
+
+            <!-- Section: Solution -->
+            <section id="solution" class="py-20 text-center">
+                <h2 class="text-4xl font-bold mb-8">解决方案</h2>
+                <h3
+                    class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-600 mb-10">
+                    AI 原生的生物计算平台</h3>
+                <p class="text-2xl text-slate-700 max-w-4xl mx-auto mb-10">
+                    ChatMol 提供了一个<strong class="font-bold text-slate-900">AI 原生的生物计算“操作系统”</strong>。
+                    我们以<strong class="font-bold text-slate-900">自然语言</strong>为交互核心，<strong
+                        class="font-bold text-slate-900">AI Agent</strong>为执行驱动，将复杂的计算工具“服务化”，让科研人员可以专注于“科研”本身，而不是“工具”。
+                </p>
+                <div class="bg-white p-8 rounded-2xl shadow-lg inline-block border border-slate-200">
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4">当前两大核心产品：</h3>
+                    <ul class="text-xl text-left space-y-2">
+                        <li><span class="font-semibold text-blue-600"> ChatMol Copilot</span></li>
+                        <li><span class="font-semibold text-blue-600"> GROMACS Copilot</span></li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section: Product 1 - Co-pilot -->
+            <section id="product-copilot" class="py-20">
+                <h2 class="text-4xl font-bold mb-12 border-b-4 border-blue-600 pb-4 inline-block">ChatMol Copilot</h2>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 mb-10">
+                    <p class="text-xl text-slate-600 mb-6">
+                        <strong>概览：</strong> 一个集成了多种生信与 AI 工具的对话式平台。用户通过聊天，即可完成从数据获取、分子处理到高级 AI 预测的复杂任务。
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 mb-10">
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-6">产品架构 (Architecture)</h3>
+                    <div class="mb-6">
+                        <img src="png/chatmol_framework.png" alt="ChatMol Copilot 产品架构"
+                            class="w-full rounded-lg shadow-md border border-slate-200">
+                    </div>
+                    <p class="text-lg text-slate-600 mt-4">
+                        ChatMol Copilot 采用先进的 <strong class="text-blue-700">LLM + Tools</strong>
+                        架构，通过自然语言理解用户意图，智能调度后端工具链，实现从简单的分子可视化到复杂的 AI 预测任务的无缝衔接。
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 mb-10">
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-6">产品演示 (Demo)</h3>
+
+                    <!-- 第一行视频 -->
+                    <div class="mb-8">
+                        <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                            <h4 class="text-lg font-semibold text-slate-800 mb-3">演示一：蛋白序列设计</h4>
+                            <video controls class="w-full rounded-lg shadow-md" poster="">
+                                <source src="png/chatmol_design.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                            <p class="text-sm text-slate-600 mt-3">
+                                展示如何通过自然语言指令完成分子设计。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 第二行视频 -->
+                    <div class="mb-6">
+                        <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                            <h4 class="text-lg font-semibold text-slate-800 mb-3">演示二：分子对接工作流 (Docking Workflow)</h4>
+                            <video controls class="w-full rounded-lg shadow-md" poster="">
+                                <source src="png/chatmol_docking.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                            <p class="text-sm text-slate-600 mt-3">
+                                演示完整的分子对接工作流程，从目标蛋白结构获取、配体库筛选，到对接结果分析与可视化，一站式完成。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code as Act 和 Planning 能力展示 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 mb-10">
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-6">智能能力展示</h3>
+
+                    <!-- Code-as-Act -->
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold text-slate-800 mb-4">
+                            <span class="inline-flex items-center">
+                                <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                                Code-as-Act：可执行代码生成
+                            </span>
+                        </h4>
+                        <img src="png/chatmol-caa.png" alt="ChatMol Code-as-Act 能力展示"
+                            class="w-full rounded-lg shadow-md border border-slate-200">
                         <p class="text-sm text-slate-600 mt-3">
-                            展示如何通过自然语言指令完成分子设计。
+                            AI 直接生成可执行的 Python 代码，自动调用工具完成复杂的生物信息学分析任务，实现真正的"所说即所得"。
+                        </p>
+                    </div>
+
+                    <!-- Planning -->
+                    <div>
+                        <h4 class="text-xl font-semibold text-slate-800 mb-4">
+                            <span class="inline-flex items-center">
+                                <svg class="w-6 h-6 mr-2 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
+                                    </path>
+                                </svg>
+                                智能规划：任务自动分解
+                            </span>
+                        </h4>
+                        <img src="png/chatmol-planning.png" alt="ChatMol 智能规划能力展示"
+                            class="w-full rounded-lg shadow-md border border-slate-200">
+                        <p class="text-sm text-slate-600 mt-3">
+                            基于用户目标，AI 自动将复杂任务分解为多个步骤，并智能选择合适的工具链，确保任务高效完成。
                         </p>
                     </div>
                 </div>
 
-                <!-- 第二行视频 -->
-                <div class="mb-6">
-                    <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                        <h4 class="text-lg font-semibold text-slate-800 mb-3">演示二：分子对接工作流 (Docking Workflow)</h4>
-                        <video controls class="w-full rounded-lg shadow-md" poster="">
-                            <source src="png/chatmol_docking.mp4" type="video/mp4">
-                            您的浏览器不支持视频播放。
-                        </video>
-                        <p class="text-sm text-slate-600 mt-3">
-                            演示完整的分子对接工作流程，从目标蛋白结构获取、配体库筛选，到对接结果分析与可视化，一站式完成。
-                        </p>
-                    </div>
-                </div>
-            </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-6">核心能力 (Core Capabilities)</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="bg-blue-50 p-6 rounded-xl border border-blue-200">
+                                <h4 class="text-xl font-semibold text-blue-900 mb-3">🗣️ 自然语言交互</h4>
+                                <p class="text-slate-700 mb-3">告别复杂的命令行，用日常语言即可操作：</p>
+                                <div class="space-y-2">
+                                    <code
+                                        class="block bg-white text-slate-700 p-3 rounded text-sm border border-blue-100">"将蛋白涂成彩虹色，并高亮配体"</code>
+                                    <code
+                                        class="block bg-white text-slate-700 p-3 rounded text-sm border border-blue-100">"预测这个序列的蛋白结构"</code>
+                                    <code
+                                        class="block bg-white text-slate-700 p-3 rounded text-sm border border-blue-100">"对这个小分子和蛋白进行对接"</code>
+                                </div>
+                            </div>
 
-            <!-- Code as Act 和 Planning 能力展示 -->
-            <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 mb-10">
-                <h3 class="text-2xl font-semibold text-slate-800 mb-6">智能能力展示</h3>
-                
-                <!-- Code-as-Act -->
-                <div class="mb-8">
-                    <h4 class="text-xl font-semibold text-slate-800 mb-4">
-                        <span class="inline-flex items-center">
-                            <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                            </svg>
-                            Code-as-Act：可执行代码生成
-                        </span>
-                    </h4>
-                    <img src="png/chatmol-caa.png" alt="ChatMol Code-as-Act 能力展示" class="w-full rounded-lg shadow-md border border-slate-200">
-                    <p class="text-sm text-slate-600 mt-3">
-                        AI 直接生成可执行的 Python 代码，自动调用工具完成复杂的生物信息学分析任务，实现真正的"所说即所得"。
-                    </p>
-                </div>
-
-                <!-- Planning -->
-                <div>
-                    <h4 class="text-xl font-semibold text-slate-800 mb-4">
-                        <span class="inline-flex items-center">
-                            <svg class="w-6 h-6 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-                            </svg>
-                            智能规划：任务自动分解
-                        </span>
-                    </h4>
-                    <img src="png/chatmol-planning.png" alt="ChatMol 智能规划能力展示" class="w-full rounded-lg shadow-md border border-slate-200">
-                    <p class="text-sm text-slate-600 mt-3">
-                        基于用户目标，AI 自动将复杂任务分解为多个步骤，并智能选择合适的工具链，确保任务高效完成。
-                    </p>
-                </div>
-            </div>
-
-            <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
-                <h3 class="text-2xl font-semibold text-slate-800 mb-6">核心能力 (Core Capabilities)</h3>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="space-y-6">
-                        <div class="bg-blue-50 p-6 rounded-xl border border-blue-200">
-                            <h4 class="text-xl font-semibold text-blue-900 mb-3">🗣️ 自然语言交互</h4>
-                            <p class="text-slate-700 mb-3">告别复杂的命令行，用日常语言即可操作：</p>
-                            <div class="space-y-2">
-                                <code class="block bg-white text-slate-700 p-3 rounded text-sm border border-blue-100">"将蛋白涂成彩虹色，并高亮配体"</code>
-                                <code class="block bg-white text-slate-700 p-3 rounded text-sm border border-blue-100">"预测这个序列的蛋白结构"</code>
-                                <code class="block bg-white text-slate-700 p-3 rounded text-sm border border-blue-100">"对这个小分子和蛋白进行对接"</code>
+                            <div class="bg-green-50 p-6 rounded-xl border border-green-200">
+                                <h4 class="text-xl font-semibold text-green-900 mb-3">🔧 强大的工具生态</h4>
+                                <ul class="space-y-2 text-slate-700">
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">•</span>
+                                        <span><strong>分子可视化</strong>：基于 Mol* 的高质量 3D 渲染</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">•</span>
+                                        <span><strong>数据获取</strong>：自动从 PDB、UniProt、ChEMBL 获取数据</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">•</span>
+                                        <span><strong>小分子处理</strong>：集成 RDKit 进行分子编辑与性质计算</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">•</span>
+                                        <span><strong>分子对接</strong>：支持 AutoDock Vina 等主流对接工具</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        
-                        <div class="bg-green-50 p-6 rounded-xl border border-green-200">
-                            <h4 class="text-xl font-semibold text-green-900 mb-3">🔧 强大的工具生态</h4>
-                            <ul class="space-y-2 text-slate-700">
-                                <li class="flex items-start">
-                                    <span class="text-green-600 mr-2">•</span>
-                                    <span><strong>分子可视化</strong>：基于 PyMOL 的高质量 3D 渲染</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="text-green-600 mr-2">•</span>
-                                    <span><strong>数据获取</strong>：自动从 PDB、UniProt、ChEMBL 获取数据</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="text-green-600 mr-2">•</span>
-                                    <span><strong>小分子处理</strong>：集成 RDKit 进行分子编辑与性质计算</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="text-green-600 mr-2">•</span>
-                                    <span><strong>分子对接</strong>：支持 AutoDock Vina 等主流对接工具</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-6">
-                        <div class="bg-purple-50 p-6 rounded-xl border border-purple-200">
-                            <h4 class="text-xl font-semibold text-purple-900 mb-3">🤖 前沿 AI 工具集成</h4>
-                            <ul class="space-y-3 text-slate-700">
-                                <li class="bg-white p-3 rounded-lg border border-purple-100">
-                                    <strong class="text-purple-700">结构预测</strong>
-                                    <p class="text-sm mt-1">集成 AlphaFold2 / ESMFold API，秒级完成蛋白质结构预测</p>
-                                </li>
-                                <li class="bg-white p-3 rounded-lg border border-purple-100">
-                                    <strong class="text-purple-700">序列设计</strong>
-                                    <p class="text-sm mt-1">集成 ProteinMPNN，基于结构的理性蛋白质设计</p>
-                                </li>
-                                <li class="bg-white p-3 rounded-lg border border-purple-100">
-                                    <strong class="text-purple-700">性质预测</strong>
-                                    <p class="text-sm mt-1">整合多种 ML 模型，预测溶解度、毒性、活性等性质</p>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
-                            <h4 class="text-xl font-semibold text-amber-900 mb-3">⚡ 智能工作流</h4>
-                            <p class="text-slate-700 mb-3">AI 自动规划执行流程，处理复杂任务：</p>
-                            <ul class="space-y-2 text-slate-700">
-                                <li class="flex items-start">
-                                    <span class="text-amber-600 mr-2">•</span>
-                                    <span>自动任务分解与工具选择</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="text-amber-600 mr-2">•</span>
-                                    <span>智能参数推荐与优化</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="text-amber-600 mr-2">•</span>
-                                    <span>结果自动分析与可视化</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="text-amber-600 mr-2">•</span>
-                                    <span>多轮对话式任务精修</span>
-                                </li>
-                            </ul>
+
+                        <div class="space-y-6">
+                            <div class="bg-purple-50 p-6 rounded-xl border border-purple-200">
+                                <h4 class="text-xl font-semibold text-purple-900 mb-3">🤖 前沿 AI 工具集成</h4>
+                                <ul class="space-y-3 text-slate-700">
+                                    <li class="bg-white p-3 rounded-lg border border-purple-100">
+                                        <strong class="text-purple-700">结构预测</strong>
+                                        <p class="text-sm mt-1">集成 AlphaFold2 / ESMFold API，秒级完成蛋白质结构预测</p>
+                                    </li>
+                                    <li class="bg-white p-3 rounded-lg border border-purple-100">
+                                        <strong class="text-purple-700">序列设计</strong>
+                                        <p class="text-sm mt-1">集成 ProteinMPNN，基于结构的理性蛋白质设计</p>
+                                    </li>
+                                    <li class="bg-white p-3 rounded-lg border border-purple-100">
+                                        <strong class="text-purple-700">性质预测</strong>
+                                        <p class="text-sm mt-1">整合多种 ML 模型，预测溶解度、毒性、活性等性质</p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
+                                <h4 class="text-xl font-semibold text-amber-900 mb-3">⚡ 智能工作流</h4>
+                                <p class="text-slate-700 mb-3">AI 自动规划执行流程，处理复杂任务：</p>
+                                <ul class="space-y-2 text-slate-700">
+                                    <li class="flex items-start">
+                                        <span class="text-amber-600 mr-2">•</span>
+                                        <span>自动任务分解与工具选择</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-amber-600 mr-2">•</span>
+                                        <span>智能参数推荐与优化</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-amber-600 mr-2">•</span>
+                                        <span>结果自动分析与可视化</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-amber-600 mr-2">•</span>
+                                        <span>多轮对话式任务精修</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Section: Product 2 - GROMACS Agent -->
-        <section id="product-gromacs" class="py-20">
-            <h2 class="text-4xl font-bold mb-12 border-b-4 border-blue-600 pb-4 inline-block">GROMACS Copilot</h2>
-            <p class="text-xl text-slate-600 mb-4 max-w-3xl">
-                <strong>概览：</strong> 针对分子动力学（MD）模拟的“黑盒”难题，我们开发了 GROMACS Agent。这是一个能<strong class="font-bold">自主规划、执行、甚至纠错</strong>的智能代理。
-            </p>
-            <p class="text-xl text-red-700 mb-10 max-w-3xl">
-                <strong>解决痛点：</strong> GROMACS 安装配置复杂、工作流繁琐、参数专业性强。新手根本无法上手，专家也耗时耗力。
-            </p>
+            <!-- Section: Product 2 - GROMACS Agent -->
+            <section id="product-gromacs" class="py-20">
+                <h2 class="text-4xl font-bold mb-12 border-b-4 border-blue-600 pb-4 inline-block">GROMACS Copilot</h2>
+                <p class="text-xl text-slate-600 mb-4 max-w-3xl">
+                    <strong>概览：</strong> 针对分子动力学（MD）模拟专业门槛高的难题，我们开发了 GROMACS Agent。这是一个能<strong
+                        class="font-bold">自主规划、执行、甚至纠错</strong>的智能代理。
+                </p>
+                <p class="text-xl text-red-700 mb-10 max-w-3xl">
+                    <strong>解决痛点：</strong> GROMACS 安装配置复杂、工作流繁琐、参数专业性强。新手根本无法上手，专家也耗时耗力。
+                </p>
 
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
-                <div class="lg:col-span-3 bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-4">产品形态 (Form)：E2E 自动化</h3>
-                    <div class="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl shadow-inner">
-                        <div class="text-lg font-semibold bg-white p-4 rounded-lg shadow border border-slate-200">用户输入 PDB + 目标</div>
-                        <span class="text-4xl text-blue-600 my-3 font-mono">&darr;</span>
-                        <div class="text-lg font-semibold bg-blue-100 text-blue-800 p-4 rounded-lg shadow border border-blue-200">[ Agent 自动规划与参数配置 ]</div>
-                        <span class="text-4xl text-blue-600 my-3 font-mono">&darr;</span>
-                        <div class="text-lg font-semibold bg-blue-100 text-blue-800 p-4 rounded-lg shadow border border-blue-200">[ 自动执行 GROMACS 工作流 (纠错) ]</div>
-                        <span class="text-4xl text-blue-600 my-3 font-mono">&darr;</span>
-                        <div class="text-lg font-semibold bg-green-100 text-green-800 p-4 rounded-lg shadow border border-green-200">产出结果 + 分析报告</div>
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                    <div class="lg:col-span-3 bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-4">产品形态：端到端自动化</h3>
+                        <div class="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl shadow-inner">
+                            <div class="text-lg font-semibold bg-white p-4 rounded-lg shadow border border-slate-200">
+                                用户输入 PDB + 目标</div>
+                            <span class="text-4xl text-blue-600 my-3 font-mono">&darr;</span>
+                            <div
+                                class="text-lg font-semibold bg-blue-100 text-blue-800 p-4 rounded-lg shadow border border-blue-200">
+                                [ Agent 自动规划与参数配置 ]</div>
+                            <span class="text-4xl text-blue-600 my-3 font-mono">&darr;</span>
+                            <div
+                                class="text-lg font-semibold bg-blue-100 text-blue-800 p-4 rounded-lg shadow border border-blue-200">
+                                [ 自动执行 GROMACS 工作流 (纠错) ]</div>
+                            <span class="text-4xl text-blue-600 my-3 font-mono">&darr;</span>
+                            <div
+                                class="text-lg font-semibold bg-green-100 text-green-800 p-4 rounded-lg shadow border border-green-200">
+                                产出结果 + 分析报告</div>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-4 mt-8">核心能力：自主执行</h3>
+                        <ul class="space-y-4">
+                            <li>
+                                <h4 class="text-lg font-semibold">自主规划</h4>
+                                <p class="text-slate-600 mt-1">用户仅需高层目标：<code
+                                        class="bg-slate-100 p-1 rounded text-sm">“...做一个 100ns 的 MD 模拟”</code></p>
+                            </li>
+                            <li>
+                                <h4 class="text-lg font-semibold">Agent 自动执行</h4>
+                                <ol class="list-decimal list-outside space-y-2 pl-6 text-slate-600 mt-1">
+                                    <li><strong>环境准备</strong>：自动下载安装 GROMACS。</li>
+                                    <li><strong>工作流生成</strong>：基于 LLM 经验，自动生成 MD 模拟全流程。</li>
+                                    <li><strong>智能参数</strong>：自动推荐力场、水模型、盒子大小。</li>
+                                </ol>
+                            </li>
+                        </ul>
                     </div>
-
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-4 mt-8">核心能力：自主执行</h3>
-                    <ul class="space-y-4">
-                        <li>
-                            <h4 class="text-lg font-semibold">自主规划</h4>
-                            <p class="text-slate-600 mt-1">用户仅需高层目标：<code class="bg-slate-100 p-1 rounded text-sm">“...做一个 100ns 的 MD 模拟”</code></p>
-                        </li>
-                        <li>
-                            <h4 class="text-lg font-semibold">Agent 自动执行</h4>
-                            <ol class="list-decimal list-outside space-y-2 pl-6 text-slate-600 mt-1">
-                                <li><strong>环境准备</strong>：自动下载安装 GROMACS。</li>
-                                <li><strong>工作流生成</strong>：基于 LLM 经验，自动生成 MD 模拟全流程。</li>
-                                <li><strong>智能参数</strong>：自动推荐力场、水模型、盒子大小。</li>
-                            </ol>
-                        </li>
-                    </ul>
+                    <div class="lg:col-span-2 bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-4">应用场景</h3>
+                        <div class="space-y-6">
+                            <div class="bg-green-50 p-6 rounded-xl border border-green-200">
+                                <h4 class="text-lg font-semibold text-green-900 mb-2 flex items-start">
+                                    <svg class="w-5 h-5 mr-2 mt-1 flex-shrink-0 text-green-600" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                        </path>
+                                    </svg>
+                                    <span>药化研究生的"第一次"模拟</span>
+                                </h4>
+                                <p class="text-slate-700">一名药化专业的学生，为其设计的新分子进行 MD 验证。他无需学习 GROMACS，只需通过 GROMACS Copilot
+                                    提交任务，即可在数小时后获得初步的模拟轨迹和分析报告。</p>
+                            </div>
+                            <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-200">
+                                <h4 class="text-lg font-semibold text-indigo-900 mb-2 flex items-start">
+                                    <svg class="w-5 h-5 mr-2 mt-1 flex-shrink-0 text-indigo-600" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                                        </path>
+                                    </svg>
+                                    <span>计算专家的"效率工具"</span>
+                                </h4>
+                                <p class="text-slate-700">自动处理繁琐的准备工作，使其能专注于高级参数调优和结果分析。</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lg:col-span-2 bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-4">应用场景</h3>
-                    <div class="space-y-6">
-                        <div class="bg-green-50 p-6 rounded-xl border border-green-200">
-                            <h4 class="text-lg font-semibold text-green-900 mb-2 flex items-start">
-                                <svg class="w-5 h-5 mr-2 mt-1 flex-shrink-0 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                                </svg>
-                                <span>药化研究生的"第一次"模拟</span>
+
+                <!-- Demo GIF 展示 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 mt-10">
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-6">实战演示</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                            <h4 class="text-lg font-semibold text-slate-800 mb-3">
+                                <span class="inline-flex items-center">
+                                    <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
+                                        </path>
+                                    </svg>
+                                    蛋白质 MD 模拟
+                                </span>
                             </h4>
-                            <p class="text-slate-700">一名药化专业的学生，为其设计的新分子进行 MD 验证。他无需学习 GROMACS，只需通过 GROMACS Copilot 提交任务，即可在数小时后获得初步的模拟轨迹和分析报告。</p>
+                            <img src="png/1pga_gmx_copilot_animation.gif" alt="蛋白质 MD 模拟演示"
+                                class="w-full rounded-lg shadow-md border border-slate-200">
+                            <p class="text-sm text-slate-600 mt-3">
+                                从 PDB 文件到完整 MD 模拟，GROMACS Copilot 自动处理蛋白预处理、溶剂化、能量最小化、平衡和生产运行全流程。
+                            </p>
                         </div>
-                        <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-200">
-                            <h4 class="text-lg font-semibold text-indigo-900 mb-2 flex items-start">
-                                <svg class="w-5 h-5 mr-2 mt-1 flex-shrink-0 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                                </svg>
-                                <span>计算专家的"效率工具"</span>
+                        <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                            <h4 class="text-lg font-semibold text-slate-800 mb-3">
+                                <span class="inline-flex items-center">
+                                    <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01">
+                                        </path>
+                                    </svg>
+                                    蛋白-配体复合物模拟
+                                </span>
                             </h4>
-                            <p class="text-slate-700">自动处理繁琐的准备工作，使其能专注于高级参数调优和结果分析。</p>
+                            <img src="png/prot_lig.gif" alt="蛋白-配体复合物 MD 模拟演示"
+                                class="w-full rounded-lg shadow-md border border-slate-200">
+                            <p class="text-sm text-slate-600 mt-3">
+                                自动识别配体，生成拓扑文件，并执行蛋白-配体复合物的完整 MD 模拟流程，无需人工干预。
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Demo GIF 展示 -->
-            <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 mt-10">
-                <h3 class="text-2xl font-semibold text-slate-800 mb-6">实战演示</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                        <h4 class="text-lg font-semibold text-slate-800 mb-3">
-                            <span class="inline-flex items-center">
-                                <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                                </svg>
-                                蛋白质 MD 模拟
-                            </span>
-                        </h4>
-                        <img src="png/1pga_gmx_copilot_animation.gif" alt="蛋白质 MD 模拟演示" class="w-full rounded-lg shadow-md border border-slate-200">
-                        <p class="text-sm text-slate-600 mt-3">
-                            从 PDB 文件到完整 MD 模拟，GROMACS Copilot 自动处理蛋白预处理、溶剂化、能量最小化、平衡和生产运行全流程。
-                        </p>
-                    </div>
-                    <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                        <h4 class="text-lg font-semibold text-slate-800 mb-3">
-                            <span class="inline-flex items-center">
-                                <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
-                                </svg>
-                                蛋白-配体复合物模拟
-                            </span>
-                        </h4>
-                        <img src="png/prot_lig.gif" alt="蛋白-配体复合物 MD 模拟演示" class="w-full rounded-lg shadow-md border border-slate-200">
-                        <p class="text-sm text-slate-600 mt-3">
-                            自动识别配体，生成拓扑文件，并执行蛋白-配体复合物的完整 MD 模拟流程，无需人工干预。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
 
-        <!-- Section: Value Proposition -->
-        <section id="value" class="py-20 bg-slate-100 rounded-3xl my-16 p-8 md:p-12">
-            <h2 class="text-4xl font-bold mb-12 text-center">核心价值 (Value Proposition)</h2>
-            <div class="w-full max-w-5xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden border border-slate-200">
-                <table class="w-full">
-                    <thead class="bg-slate-800 text-white">
-                        <tr>
-                            <th class="text-left p-6 text-xl md:text-2xl">目标用户</th>
-                            <th class="text-left p-6 text-xl md:text-2xl">核心价值</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-200">
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="p-6 text-xl font-semibold">👩‍🔬 实验科学家</td>
-                            <td class="p-6 text-lg text-slate-700"><strong>“赋能”</strong>：<br> 零门槛使用前沿 AI 与计算工具，将科研想法快速变为“计算结果”，极大加速早期探索。</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="p-6 text-xl font-semibold">👨‍💻 计算科学家</td>
-                            <td class="p-6 text-lg text-slate-700"><strong>“增效”</strong>：<br> 将重复性、标准化的劳动（如 MD 准备）交给 Agent，释放专家精力于高价值的分析与创新工作。</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="p-6 text-xl font-semibold">💊 研发团队 (药企/CRO)</td>
-                            <td class="p-6 text-lg text-slate-700"><strong>“加速”</strong>：<br> 打通实验与计算壁垒，标准化工作流，沉淀团队知识，实现研发全流程的降本增效。</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Section: Business Model -->
-        <section id="model" class="py-20">
-            <h2 class="text-4xl font-bold mb-12 text-center">商业模式与定价 (Business Model & Pricing)</h2>
-            <p class="text-2xl text-center text-slate-700 mb-10 max-w-3xl mx-auto">我们采用<strong class="font-bold text-blue-700">“开源核心 + 商业服务”</strong>的 Open-Core 模式，平衡社区贡献与企业价值。</p>
-            <div class="w-full max-w-6xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden border border-slate-200">
-                <div class="overflow-x-auto">
-                    <table class="w-full min-w-max">
-                        <thead class="bg-slate-100">
+            <!-- Section: Value Proposition -->
+            <section id="value" class="py-20 bg-slate-100 rounded-3xl my-16 p-8 md:p-12">
+                <h2 class="text-4xl font-bold mb-12 text-center">核心价值 (Value Proposition)</h2>
+                <div
+                    class="w-full max-w-5xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden border border-slate-200">
+                    <table class="w-full">
+                        <thead class="bg-slate-800 text-white">
                             <tr>
-                                <th class="text-left p-5 text-xl font-semibold">版本</th>
-                                <th class="text-left p-5 text-xl font-semibold">价格</th>
-                                <th class="text-left p-5 text-xl font-semibold">目标用户</th>
-                                <th class="text-left p-5 text-xl font-semibold">核心功能</th>
+                                <th class="text-left p-6 text-xl md:text-2xl">目标用户</th>
+                                <th class="text-left p-6 text-xl md:text-2xl">核心价值</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-200">
                             <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="p-5 text-lg font-semibold text-green-700">社区版 (Community)</td>
-                                <td class="p-5 text-lg font-bold">永久免费</td>
-                                <td class="p-5 text-lg">个人开发者、学生、学者</td>
-                                <td class="p-5 text-lg">包含所有核心开源功能。由社区驱动。</td>
-                            </tr>
-                            <tr class="hover:bg-blue-50 transition-colors border-y-4 border-blue-500">
-                                <td class="p-5 text-lg font-semibold text-blue-700">企业版 (Enterprise)</td>
-                                <td class="p-5 text-lg font-bold">订阅/合约</td>
-                                <td class="p-5 text-lg">生物科技公司、药企、CRO</td>
-                                <td class="p-5 text-lg"><strong>私有化部署</strong>、<strong>高级功能</strong> (RAG, 协作)、SLA 支持、高级 Agent。</td>
+                                <td class="p-6 text-xl font-semibold">👩‍🔬 实验科学家</td>
+                                <td class="p-6 text-lg text-slate-700"><strong>“赋能”</strong>：<br> 零门槛使用前沿 AI
+                                    与计算工具，将科研想法快速变为“计算结果”，极大加速早期探索。</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="p-5 text-lg font-semibold text-indigo-700">定制服务 (Custom)</td>
-                                <td class="p-5 text-lg font-bold">项目制</td>
-                                <td class="p-5 text-lg">大型药企 / 顶尖实验室</td>
-                                <td class="p-5 text-lg">针对特定工具或私有工作流的 Agent 定制开发。</td>
+                                <td class="p-6 text-xl font-semibold">👨‍💻 计算科学家</td>
+                                <td class="p-6 text-lg text-slate-700"><strong>“增效”</strong>：<br> 将重复性、标准化的劳动（如 MD 准备）交给
+                                    Agent，释放专家精力于高价值的分析与创新工作。</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-6 text-xl font-semibold">💊 研发团队 (药企/CRO)</td>
+                                <td class="p-6 text-lg text-slate-700"><strong>“加速”</strong>：<br>
+                                    打通实验与计算壁垒，标准化工作流，沉淀团队知识，实现研发全流程的降本增效。</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Section: Roadmap -->
-        <section id="roadmap" class="py-20">
-            <h2 class="text-4xl font-bold mb-12 border-b-4 border-blue-600 pb-4 inline-block">未来蓝图</h2>
-            <!-- Make roadmap content the same max width as the main container -->
-            <div class="w-full max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-6 text-lg text-slate-700">
-                        <p class="text-2xl font-semibold text-slate-900">我们的下一步是超越“工具调用”，构建一个<strong class="font-bold text-blue-700">AI 驱动的“项目制”生物计算工作台 (Workbench)</strong>。</p>
-                        <ul class="list-none space-y-4">
-                            <li class="flex items-start">
-                                <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
-                                <span><strong>项目制知识库 (Project RAG)</strong>：上传内部实验数据、Slides、专利，让 AI 成为懂你项目的“专家”，提供药物设计策略。</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
-                                <span><strong>可视化工作流 (Visual Workflow)</strong>：拖拽式串联工具，实现复杂工作流的自动化。</span>
-                            </li>
-                             <li class="flex items-start">
-                                <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
-                                <span><strong>异步任务 (Async Jobs)</strong>：完美支持 MD 等长时任务，完成后自动生成分析报告。</span>
-                            </li>
-                        </ul>
+            <!-- Section: Business Model -->
+            <section id="model" class="py-20">
+                <h2 class="text-4xl font-bold mb-12 text-center">商业模式与定价 (Business Model & Pricing)</h2>
+                <p class="text-2xl text-center text-slate-700 mb-10 max-w-3xl mx-auto">我们采用<strong
+                        class="font-bold text-blue-700">“开源核心 + 商业服务”</strong>的 Open-Core 模式，平衡社区贡献与企业价值。</p>
+                <div
+                    class="w-full max-w-6xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden border border-slate-200">
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-max">
+                            <thead class="bg-slate-100">
+                                <tr>
+                                    <th class="text-left p-5 text-xl font-semibold">版本</th>
+                                    <th class="text-left p-5 text-xl font-semibold">价格</th>
+                                    <th class="text-left p-5 text-xl font-semibold">目标用户</th>
+                                    <th class="text-left p-5 text-xl font-semibold">核心功能</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200">
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="p-5 text-lg font-semibold text-green-700">社区版 (Community)</td>
+                                    <td class="p-5 text-lg font-bold">永久免费</td>
+                                    <td class="p-5 text-lg">个人开发者、学生、学者</td>
+                                    <td class="p-5 text-lg">包含所有核心开源功能。由社区驱动。</td>
+                                </tr>
+                                <tr class="hover:bg-blue-50 transition-colors border-y-4 border-blue-500">
+                                    <td class="p-5 text-lg font-semibold text-blue-700">企业版 (Enterprise)</td>
+                                    <td class="p-5 text-lg font-bold">订阅/合约</td>
+                                    <td class="p-5 text-lg">生物科技公司、药企、CRO</td>
+                                    <td class="p-5 text-lg"><strong>私有化部署</strong>、<strong>高级功能</strong> (RAG, 协作)、SLA
+                                        支持、高级 Agent。</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="p-5 text-lg font-semibold text-indigo-700">定制服务</td>
+                                    <td class="p-5 text-lg font-bold">项目制</td>
+                                    <td class="p-5 text-lg">大型药企 / 顶尖实验室</td>
+                                    <td class="p-5 text-lg">针对特定工具或私有工作流的 Agent 定制开发。</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- <div>
+                </div>
+            </section>
+
+            <!-- Section: Roadmap -->
+            <section id="roadmap" class="py-20">
+                <h2 class="text-4xl font-bold mb-12 border-b-4 border-blue-600 pb-4 inline-block">未来蓝图</h2>
+                <!-- Make roadmap content the same max width as the main container -->
+                <div class="w-full max-w-7xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-1 gap-12 items-center">
+                        <div class="space-y-6 text-lg text-slate-700">
+                            <p class="text-2xl font-semibold text-slate-900">我们的下一步是超越“工具调用”，构建一个<strong
+                                    class="font-bold text-blue-700">AI 驱动的“项目制”生物计算工作台</strong>。</p>
+                            <ul class="list-none space-y-4">
+                                <li class="flex items-start">
+                                    <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
+                                    <span><strong>项目制知识库 (Project RAG)</strong>：上传内部实验数据、Slides、专利，让 AI
+                                        成为懂你项目的“专家”，提供药物设计策略。</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
+                                    <span><strong>可视化工作流 (Visual Workflow)</strong>：拖拽式串联工具，实现复杂工作流的自动化。</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
+                                    <span><strong>异步任务 (Async Jobs)</strong>：完美支持 MD 等长时任务，完成后自动生成分析报告。</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- <div>
                         <img src="https://placehold.co/600x450/e0e7ff/312e81?text=未来工作台+UI+概念图" alt="未来工作台 UI 概念图" class="rounded-2xl shadow-lg">
                     </div> -->
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Section: Contact -->
-        <section id="contact" class="py-20 text-center bg-slate-900 text-white rounded-3xl my-16 p-12">
-            <h2 class="text-6xl font-extrabold mb-6">ChatMol</h2>
-            <h3 class="text-4xl font-semibold text-blue-300 mb-12">AI 驱动的生物计算革命</h3>
-            
-            <div class="text-2xl text-slate-200 space-y-3">
-                <!-- <p>[email protected]</p> -->
-                <p>https://chatmol.org/</p>
-            </div>
-        </section>
+            <!-- Section: Contact -->
+            <section id="contact" class="py-20 text-center bg-slate-900 text-white rounded-3xl my-16 p-12">
+                <h2 class="text-6xl font-extrabold mb-6">ChatMol</h2>
+                <h3 class="text-4xl font-semibold text-blue-300 mb-12">AI 驱动的生物计算革命</h3>
+
+                <div class="text-2xl text-slate-200 space-y-3">
+                    <!-- <p>[email protected]</p> -->
+                    <p>https://chatmol.org/</p>
+                </div>
+            </section>
 
         </div>
     </main>
@@ -606,16 +708,18 @@
             sections.forEach(section => {
                 observer.observe(section);
             });
-            
+
             // Set initial active link
             if (window.location.hash) {
-                 const initialLink = document.querySelector(`.nav-link[href="${window.location.hash}"]`);
-                 if(initialLink) initialLink.classList.add('active');
+                const initialLink = document.querySelector(`.nav-link[href="${window.location.hash}"]`);
+                if (initialLink) initialLink.classList.add('active');
             } else {
-                 const firstLink = document.querySelector('.nav-link');
-                 if(firstLink) firstLink.classList.add('active');
+                const firstLink = document.querySelector('.nav-link');
+                if (firstLink) firstLink.classList.add('active');
             }
         });
     </script>
 </body>
+
 </html>
+<!-- <!DOCTYPE html> -->
