@@ -22,6 +22,38 @@
         section {
             scroll-margin-top: 4rem; /* Adjust as needed */
         }
+        /* Layout: make main occupy remaining space next to fixed sidebar and center inner content */
+        main#main-content {
+            margin-left: 0;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center; /* center inner container horizontally */
+            align-items: flex-start;
+            box-sizing: border-box;
+        }
+
+        /* For md and up, account for sidebar width (16rem for w-64) */
+        @media (min-width: 768px) {
+            main#main-content {
+                margin-left: 16rem; /* matches sidebar w-64 */
+                width: calc(100% - 16rem);
+            }
+        }
+
+        /* Inner wrapper that constrains content and centers it inside the remaining space */
+        .content-wrapper {
+            width: 100%;
+            max-width: 80rem; /* similar to Tailwind's max-w-7xl */
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 768px) {
+            .content-wrapper {
+                padding: 4rem;
+            }
+        }
     </style>
 </head>
 <body class="flex">
@@ -44,7 +76,8 @@
     </nav>
 
     <!-- Main Content Area -->
-    <main class="flex-1 md:ml-64 p-8 md:p-16 max-w-7xl mx-auto">
+    <main id="main-content" class="flex-1 md:ml-64 p-8 md:p-16">
+        <div class="content-wrapper">
         
         <!-- Section: Home -->
         <section id="home" class="min-h-[80vh] flex flex-col justify-center py-20">
@@ -485,27 +518,30 @@
         <!-- Section: Roadmap -->
         <section id="roadmap" class="py-20">
             <h2 class="text-4xl font-bold mb-12 border-b-4 border-blue-600 pb-4 inline-block">未来蓝图</h2>
-             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6 text-lg text-slate-700">
-                    <p class="text-2xl font-semibold text-slate-900">我们的下一步是超越“工具调用”，构建一个<strong class="font-bold text-blue-700">AI 驱动的“项目制”生物计算工作台 (Workbench)</strong>。</p>
-                    <ul class="list-none space-y-4">
-                        <li class="flex items-start">
-                            <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
-                            <span><strong>项目制知识库 (Project RAG)</strong>：上传内部实验数据、Slides、专利，让 AI 成为懂你项目的“专家”，提供药物设计策略。</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
-                            <span><strong>可视化工作流 (Visual Workflow)</strong>：拖拽式串联工具，实现复杂工作流的自动化。</span>
-                        </li>
-                         <li class="flex items-start">
-                            <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
-                            <span><strong>异步任务 (Async Jobs)</strong>：完美支持 MD 等长时任务，完成后自动生成分析报告。</span>
-                        </li>
-                    </ul>
+            <!-- Make roadmap content the same max width as the main container -->
+            <div class="w-full max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6 text-lg text-slate-700">
+                        <p class="text-2xl font-semibold text-slate-900">我们的下一步是超越“工具调用”，构建一个<strong class="font-bold text-blue-700">AI 驱动的“项目制”生物计算工作台 (Workbench)</strong>。</p>
+                        <ul class="list-none space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
+                                <span><strong>项目制知识库 (Project RAG)</strong>：上传内部实验数据、Slides、专利，让 AI 成为懂你项目的“专家”，提供药物设计策略。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
+                                <span><strong>可视化工作流 (Visual Workflow)</strong>：拖拽式串联工具，实现复杂工作流的自动化。</span>
+                            </li>
+                             <li class="flex items-start">
+                                <span class="text-blue-600 font-bold text-xl mr-3 mt-1">&#10003;</span>
+                                <span><strong>异步任务 (Async Jobs)</strong>：完美支持 MD 等长时任务，完成后自动生成分析报告。</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <div>
+                        <img src="https://placehold.co/600x450/e0e7ff/312e81?text=未来工作台+UI+概念图" alt="未来工作台 UI 概念图" class="rounded-2xl shadow-lg">
+                    </div> -->
                 </div>
-                <!-- <div>
-                    <img src="https://placehold.co/600x450/e0e7ff/312e81?text=未来工作台+UI+概念图" alt="未来工作台 UI 概念图" class="rounded-2xl shadow-lg">
-                </div> -->
             </div>
         </section>
 
@@ -514,16 +550,13 @@
             <h2 class="text-6xl font-extrabold mb-6">ChatMol</h2>
             <h3 class="text-4xl font-semibold text-blue-300 mb-12">AI 驱动的生物计算革命</h3>
             
-            <div class="text-3xl font-bold mb-10">
-                感谢聆听 | 期待合作
-            </div>
-            
             <div class="text-2xl text-slate-200 space-y-3">
                 <!-- <p>[email protected]</p> -->
                 <p>https://chatmol.org/</p>
             </div>
         </section>
 
+        </div>
     </main>
 
     <script>
