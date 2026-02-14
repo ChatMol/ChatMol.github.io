@@ -409,6 +409,39 @@ footer a:hover {
     color: var(--gold-mid);
 }
 
+/* Paper Cards */
+.paper-card {
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.paper-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(200, 168, 78, 0.2);
+}
+
+.paper-link {
+    text-decoration: none;
+    display: block;
+}
+
+.paper-image {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+}
+
+.paper-card:hover .paper-image {
+    border-color: var(--gold-start);
+    box-shadow: 0 4px 16px rgba(200, 168, 78, 0.3);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
