@@ -7,6 +7,330 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="png/chatmollogo.png">
     <link rel="stylesheet" href="styles.css?v=20260214-4">
+    <style>
+        /* New Styles for Premium Layout */
+        .hero-badge {
+            background: rgba(200, 168, 78, 0.1);
+            color: var(--gold-mid);
+            border: 1px solid var(--border);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Scroll Animations */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered delays for child elements if needed */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-secondary-glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 0.95rem 2.2rem;
+            border-radius: 11px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary-glass:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold-start);
+        }
+
+        /* Trusted By */
+        .trusted-by {
+            text-align: center;
+            opacity: 0.6;
+            margin-top: 2rem;
+        }
+        .trusted-by p {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        .logos-row {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Stats Band */
+        .stats-band {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem 0;
+            background: rgba(15, 15, 15, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        .stat-item {
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-val { font-size: 2rem; font-weight: 800; }
+        .stat-lbl { font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 5px; }
+
+        /* Bento Grid */
+        .bento-section { padding: 6rem 2.5rem; }
+        .eyebrow { color: var(--gold-start); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; margin-bottom: 1rem; display: block; }
+        .section-header-left { text-align: left; margin-bottom: 3rem; max-width: 800px; }
+        .section-header-left h2 { font-size: 3rem; line-height: 1.1; margin-bottom: 1rem; }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(280px, auto);
+            gap: 1.5rem;
+        }
+        .bento-card {
+            background: #0f0f0f;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold-start);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        }
+        
+        /* New Enterprise Layout Styles */
+        .tier-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            color: #666;
+            margin-bottom: 2rem;
+            border-left: 2px solid var(--gold-start);
+            padding-left: 1rem;
+            font-weight: 700;
+        }
+
+        .bento-grid-enterprise {
+            display: grid;
+            grid-template-columns: 1fr;
+            margin-bottom: 2rem;
+        }
+
+        .flagship-card {
+            background: linear-gradient(135deg, #181818, #0a0a0a);
+            border: 1px solid rgba(200, 168, 78, 0.25);
+            padding: 0; /* Remove padding to let image bleed if needed, handle inner content padding separately */
+            min-height: 500px;
+            display: flex;
+            flex-direction: row; /* Ensure row layout overrides bento-card column layout */
+            align-items: stretch; /* Stretch to fill height */
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flagship-card::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 40%;
+            background: radial-gradient(circle at 100% 50%, rgba(200, 168, 78, 0.15), transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .card-content-featured {
+            padding: 4rem;
+            max-width: 40%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative; /* Ensure z-index works */
+        }
+
+        .visual-lab {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Align image to right */
+            overflow: visible; /* Allow image to overflow if needed */
+            z-index: 5; /* Ensure image sits above the background overlay */
+            min-height: 500px; /* Ensure container has height */
+        }
+
+        .lab-screenshot {
+            width: 100%;
+            max-width: 850px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: -20px 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: block;
+            z-index: 10; /* Ensure image appears above overlay effects */
+            margin-right: 2rem;
+        }
+
+        .flagship-card h3 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #fff, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .featured-desc {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #bbb;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-list-horizontal {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .feature-list-horizontal li {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--gold-mid);
+            font-weight: 600;
+        }
+        
+        .feature-list-horizontal li span {
+            font-size: 1.5rem;
+        }
+
+        .bento-grid-opensource {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .btn-text-arrow { color: var(--gold-start); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: gap 0.2s; }
+        .btn-text-arrow:hover { gap: 8px; }
+
+        @media (max-width: 1000px) {
+            .bento-grid-opensource { grid-template-columns: 1fr; }
+            .flagship-card { padding: 0; flex-direction: column; }
+            .card-content-featured { max-width: 100%; padding: 2rem 2rem 0 2rem; }
+            .visual-lab { width: 100%; min-height: 300px; justify-content: center; overflow: visible; }
+            .lab-screenshot { 
+                position: relative; 
+                width: 110%; 
+                right: auto;
+                top: 2rem;
+                transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+                margin-left: -5%;
+            }
+        }
+        
+        /* Removed old bento classes */
+        .card-content { z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+        .large-card { grid-column: span 2; grid-row: span 2; background: linear-gradient(145deg, #121212, #0a0a0a); }
+
+        .wide-card { grid-column: span 3; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2.5rem; min-height: auto; }
+
+        /* New Styles for Open Source Images */
+        .os-card-visual {
+            width: 100%;
+            height: 160px; /* Fixed height for consistency */
+            margin: 1.5rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .os-feature-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .bento-card:hover .os-feature-img {
+            transform: scale(1.05);
+        }
+        .card-content-row { display: flex; width: 100%; justify-content: space-between; align-items: center; }
+        
+        .card-badge {
+            background: var(--gold-start);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .icon-box {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; color: #fff; margin-bottom: 1rem;
+        }
+        .feature-list { list-style: none; margin: 1.5rem 0; color: var(--text-secondary); }
+        .feature-list li { margin-bottom: 0.5rem; display: flex; gap: 0.5rem; }
+        .btn-text-arrow { color: var(--gold-start); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: gap 0.2s; }
+        .btn-text-arrow:hover { gap: 8px; }
+        
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .large-card, .wide-card { grid-column: span 1; }
+            .stats-band { grid-template-columns: 1fr 1fr; }
+            .hero h1 { font-size: 3rem; }
+        }
+    </style>
 </head>
 <body>
     <!-- Nav -->
@@ -14,10 +338,11 @@
         <div class="nav-container">
             <a href="/" class="nav-logo">ChatMol</a>
             <ul class="nav-links">
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#platform">Platform</a></li>
+                <li><a href="#about">Mission</a></li>
+                <li><a href="#research">Research</a></li>
                 <li><a href="https://github.com/ChatMol">GitHub</a></li>
-                <li><a href="https://lab.cloudmol.org/" class="btn-nav-cta">Try ChatMol Lab</a></li>
+                <li><a href="https://lab.cloudmol.org/" class="btn-nav-cta">Launch Lab</a></li>
             </ul>
         </div>
     </nav>
@@ -25,189 +350,280 @@
     <!-- Hero -->
     <div class="hero">
         <div class="hero-glow"></div>
-        <h1>
-            Advancing <br />
-            <span class="gradient-text">Biological Sciences</span><br />
+        <!-- <div class="hero-badge reveal-on-scroll">Now Available: Cloud Access &rarr;</div> -->
+        <h1 class="reveal-on-scroll stagger-1">
+            Advancing <br>
+            <span class="gradient-text">Biological Science</span> <br>
             with AI Agents
         </h1>
-        <p>
+        <p class="reveal-on-scroll stagger-2">
             We build AI tools that empower researchers and developers to push the boundaries of computational biology, drug discovery, and molecular design.
         </p>
-        <a href="https://lab.cloudmol.org/" class="btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-            Try ChatMol Lab
-        </a>
+        <div class="hero-cta-group reveal-on-scroll stagger-3">
+            <a href="https://lab.cloudmol.org/" class="btn-primary">
+                Try ChatMol Lab
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <!-- <a href="#demo" class="btn-secondary-glass">
+                View Documentation
+            </a> -->
+        </div>
 
-        <!-- Stats -->
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number gradient-text">800+</div>
-                <div class="stat-label">GitHub Stars</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number gradient-text">ACL '24</div>
-                <div class="stat-label">Published Research</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number gradient-text">4</div>
-                <div class="stat-label">Open Products</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number gradient-text">50+</div>
-                <div class="stat-label">Bio Databases</div>
+        <!-- Funding Note -->
+        <div class="trusted-by reveal-on-scroll stagger-3">
+            <p>We're actively seeking funding to accelerate our mission. Please contact us if you're interested!</p>
+            <div class="logos-row">
+                <a href="mailto:contact@cloudmol.org" style="text-decoration: none; color: inherit;">
+                    <span style="border: 1px solid rgba(200, 168, 78, 0.3); padding: 8px 20px; border-radius: 8px; transition: all 0.3s;">Contact Us &rarr;</span>
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- Products Section -->
-    <section id="products">
-        <div class="section-header">
-            <h2>Our Products</h2>
-            <p>Open-source tools and AI-powered platforms for the next generation of biotech research.</p>
+    <!-- Platform Stats (Moved to separate band) -->
+    <div class="stats-band">
+        <div class="stat-item">
+            <div class="stat-val gradient-text">800+</div>
+            <div class="stat-lbl">Github Star</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-val gradient-text">50+</div>
+            <div class="stat-lbl">Integrated Databases</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-val gradient-text">Open</div>
+            <div class="stat-lbl">Source Architecture</div>
+        </div>
+    </div>
+
+    <!-- Platform Ecosystem Section -->
+    <section id="platform" class="bento-section">
+        <div class="section-header-left reveal-on-scroll">
+            <span class="eyebrow">Product Suite</span>
+            <h2>Unified Molecular Intelligence.</h2>
+            <p>From enterprise-grade cloud platforms to open-source developer tools.</p>
         </div>
 
-        <div class="products-grid">
-            <!-- ChatMol Lab - Featured -->
-            <div class="product-card featured-product">
-                <span class="product-badge featured-badge">FLAGSHIP PRODUCT</span>
-                <h3>ChatMol Lab</h3>
-                <p>An AI scientist agent that combines NVIDIA BioNeMo cloud tools, 50+ biological databases, code execution, and interactive 3D visualization. Design proteins through natural conversation.</p>
-                <ul class="product-features">
-                    <li>11 BioNeMo NIM tools (ESMFold, OpenFold, Boltz-2, RFDiffusion, DiffDock, etc.)</li>
-                    <li>50+ databases (UniProt, PDB, PubMed, ChEMBL, AlphaFold DB, etc.)</li>
-                    <li>Python code execution with BioPython integration</li>
-                    <li>Interactive 3D Molstar viewer for structure visualization</li>
-                </ul>
-                <div class="featured-cta">
-                    <a href="https://lab.cloudmol.org/" class="btn-primary">
-                        Launch ChatMol Lab
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
+        <!-- Tier 1: Industrial / Enterprise -->
+        <h3 class="tier-label reveal-on-scroll">ENTERPRISE PLATFORM</h3>
+        <div class="bento-grid-enterprise reveal-on-scroll">
+            <div class="bento-card flagship-card">
+                <div class="card-content-featured">
+                    <div class="card-badge">FLAGSHIP</div>
+                    <h3>ChatMol Lab</h3>
+                    <p class="featured-desc">The complete AI workbench for drug discovery teams. Integrate private data, execute Python, and run NVIDIA BioNeMo pipelines in a secure, compliant cloud environment.</p>
+                    <!-- <ul class="feature-list-horizontal">
+                        <li><span>⚡️</span> BioNeMo NIMs</li>
+                        <li><span>🔐</span> SOC2 Compliant</li>
+                        <li><span>🧬</span> 50+ DBs Included</li>
+                    </ul> -->
+                    <div style="margin-top: 2rem;">
+                        <a href="https://lab.cloudmol.org/" class="btn-primary">Launch Cloud Lab</a>
+                        <!-- <a href="#contact" class="btn-text-arrow" style="margin-left: 1.5rem">Book Demo &rarr;</a> -->
+                    </div>
+                </div>
+                <div class="card-visual visual-lab">
+                    <video src="png/chatmolab_demo.mov" alt="ChatMol Lab Interface" class="lab-screenshot" autoplay muted loop playsinline>
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tier 2: Open Source -->
+        <h3 class="tier-label reveal-on-scroll" style="margin-top: 4rem;">OPEN SOURCE CORE</h3>
+        <div class="bento-grid-opensource reveal-on-scroll">
+            <!-- OS Project 1: Copilot -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <div>
+                        <!-- <div class="icon-box">SDK</div> -->
+                        <h3>ChatMol Copilot</h3>
+                        <p>The core framework. Embed conversational molecular intelligence into your own apps with our Python SDK.</p>
+                    </div>
+                    <div class="os-card-visual">
+                        <img src="png/chatmol_framework.png" alt="ChatMol Framework" class="os-feature-img">
+                    </div>
+                    <a href="https://github.com/ChatMol/ChatMol" class="btn-text-arrow">View on GitHub &rarr;</a>
                 </div>
             </div>
 
-            <!-- ChatMol Copilot -->
-            <div class="product-card">
-                <img src="png/chatmol_framework.png" alt="ChatMol Copilot" style="width: 100%; border-radius: 10px; margin-bottom: 1.25rem; border: 1px solid var(--border);">
-                <span class="product-badge">OPEN SOURCE</span>
-                <h3>ChatMol Copilot</h3>
-                <p>A conversational platform integrating bioinformatics and AI tools. From data retrieval to molecular visualization — all through chat.</p>
-                <ul class="product-features">
-                    <li>Natural language interface for molecular queries</li>
-                    <li>Integration with RDKit and molecular databases</li>
-                    <li>SMILES/SMARTS pattern matching and generation</li>
-                </ul>
-                <div style="margin-top: 1.5rem;">
-                    <a href="https://github.com/ChatMol/ChatMol" target="_blank" class="btn-secondary">
-                        View on GitHub →
-                    </a>
+            <!-- OS Project 2: GROMACS -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <div>
+                        <!-- <div class="icon-box">MD</div> -->
+                        <h3>GROMACS Copilot</h3>
+                        <p>Automated MD simulations. An agent that handles topology generation and error correction autonomously.</p>
+                    </div>
+                    <div class="os-card-visual">
+                        <img src="png/1pga_gmx_copilot_animation.gif" alt="GROMACS Agent Animation" class="os-feature-img">
+                    </div>
+                    <a href="https://github.com/ChatMol/gromacs_copilot" class="btn-text-arrow">View on GitHub &rarr;</a>
                 </div>
             </div>
 
-            <!-- GROMACS Copilot -->
-            <div class="product-card">
-                <img src="png/1pga_gmx_copilot_animation.gif" alt="GROMACS Copilot" style="width: 100%; border-radius: 10px; margin-bottom: 1.25rem; border: 1px solid var(--border);">
-                <span class="product-badge">OPEN SOURCE</span>
-                <h3>GROMACS Copilot</h3>
-                <p>An autonomous AI agent for molecular dynamics simulations. Handles environment setup, workflow generation, and error correction.</p>
-                <ul class="product-features">
-                    <li>Automated GROMACS workflow setup</li>
-                    <li>Topology and parameter file generation</li>
-                    <li>Trajectory analysis and visualization</li>
-                </ul>
-                <div style="margin-top: 1.5rem;">
-                    <a href="https://github.com/ChatMol/gromacs_copilot" target="_blank" class="btn-secondary">
-                        View on GitHub →
-                    </a>
-                </div>
-            </div>
-
-            <!-- PymolFold -->
-            <div class="product-card">
-                <span class="product-badge">OPEN SOURCE</span>
-                <h3>PymolFold</h3>
-                <p>PyMOL plugin integrating structure prediction and analysis capabilities. Brings AI-powered protein folding and design tools directly into your PyMOL workflow.</p>
-                <ul class="product-features">
-                    <li>Direct integration with PyMOL</li>
-                    <li>Structure prediction via ESMFold/Boltz-2</li>
-                    <li>Interactive protein design and analysis</li>
-                </ul>
-                <div style="margin-top: 1.5rem;">
-                    <a href="https://github.com/JinyuanSun/PymolFold" target="_blank" class="btn-secondary">
-                        View on GitHub →
-                    </a>
+            <!-- OS Project 3: PymolFold -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <div>
+                        <!-- <div class="icon-box">PLG</div> -->
+                        <h3>PymolFold</h3>
+                        <p>A lightweight plugin bringing AlphaFold and ESMFold inference directly into the PyMOL desktop interface.</p>
+                    </div>
+                    <div class="os-card-visual">
+                        <img src="png/pymolfold_framework.png" alt="PymolFold Framework" class="os-feature-img">
+                    </div>
+                    <a href="https://github.com/JinyuanSun/PymolFold" class="btn-text-arrow">View on GitHub &rarr;</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About ChatMol -->
-    <section id="about">
-        <div class="section-header">
-            <h2>About ChatMol</h2>
-            <p>We're a diverse team of machine learning experts, computational chemists, and AIDD engineers dedicated to revolutionizing computational biology through AI.</p>
+    <!-- Core Value Proposition -->
+    <section id="about" style="padding: 4rem 2.5rem; background: radial-gradient(circle at 50% 0%, #1a1a1a, #000 70%);">
+        <div class="bento-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 1200px; margin: 0 auto; gap: 4rem; align-items: center;">
+            <div class="reveal-on-scroll">
+                <span class="eyebrow" style="color: #666;">OUR MISSION</span>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2;">Democratizing Computational Biology</h2>
+                <p style="color: #999; font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                    ChatMol bridges the gap between complex biological data and actionable insights. 
+                    By combining Large Language Models with industry-standard tools like NVIDIA BioNeMo and PyMOL, 
+                    we empower every researcher to become a computational biologist.
+                </p>
+                <div style="display: flex; gap: 2rem;">
+                    <div>
+                        <h4 style="color: #fff; margin-bottom: 0.5rem;">Open Source</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Built in public, for the public.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #fff; margin-bottom: 0.5rem;">AI Native</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Generative models at every step.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="stat-card reveal-on-scroll stagger-1" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); text-align: left; padding: 2rem;">
+                    <div style="color: var(--gold-start); font-size: 1.5rem; margin-bottom: 1rem;">⚡️</div>
+                    <h4 style="margin-bottom: 0.5rem;">Fast</h4>
+                    <p style="font-size: 0.85rem; color: #666;">Reduce simulation setup time from days to minutes.</p>
+                </div>
+                <div class="stat-card reveal-on-scroll stagger-2" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); text-align: left; padding: 2rem; transform: translateY(20px);">
+                    <div style="color: var(--gold-start); font-size: 1.5rem; margin-bottom: 1rem;">🛡️</div>
+                    <h4 style="margin-bottom: 0.5rem;">Secure</h4>
+                    <p style="font-size: 0.85rem; color: #666;">Enterprise-grade data handling and privacy.</p>
+                </div>
+                <div class="stat-card reveal-on-scroll stagger-1" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); text-align: left; padding: 2rem;">
+                    <div style="color: var(--gold-start); font-size: 1.5rem; margin-bottom: 1rem;">🌐</div>
+                    <h4 style="margin-bottom: 0.5rem;">Global</h4>
+                    <p style="font-size: 0.85rem; color: #666;">Accessed by researchers worldwide.</p>
+                </div>
+                <div class="stat-card reveal-on-scroll stagger-2" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); text-align: left; padding: 2rem; transform: translateY(20px);">
+                    <div style="color: var(--gold-start); font-size: 1.5rem; margin-bottom: 1rem;">🔧</div>
+                    <h4 style="margin-bottom: 0.5rem;">Modular</h4>
+                    <p style="font-size: 0.85rem; color: #666;">Tailor integration to fit your existing pipelines.</p>
+                </div>
+            </div>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 4rem;">
-            <div style="background: linear-gradient(135deg, #0f0f0f, #1a1a1a); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: all 0.3s;">
-                <h3 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--gold-start);">Our Mission</h3>
-                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
-                    Breaking down barriers in bioinformatics and drug discovery by leveraging large language models and AI Agent technology.
-                </p>
-            </div>
-            <div style="background: linear-gradient(135deg, #0f0f0f, #1a1a1a); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: all 0.3s;">
-                <h3 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--gold-start);">Our Vision</h3>
-                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
-                    Making frontier computational tools accessible to every researcher through natural language interfaces.
-                </p>
-            </div>
-            <div style="background: linear-gradient(135deg, #0f0f0f, #1a1a1a); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: all 0.3s;">
-                <h3 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--gold-start);">Open Source</h3>
-                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
-                    Most products are open source. We're building in public with the community.
-                </p>
-            </div>
-        </div>
+    </section>
 
-        <!-- Research & Publications -->
-        <div>
-            <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 2rem; text-align: center; letter-spacing: -0.02em;">Research & Publications</h3>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
-                <div class="paper-card">
-                    <a href="https://aclanthology.org/2024.langmol-1.7/" target="_blank" class="paper-link">
-                        <img src="png/ChatMol_copilot_paper.png" alt="ChatMol Copilot Paper" class="paper-image">
-                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.75rem; text-align: center;">ChatMol: Interactive Molecular Discovery</p>
-                    </a>
+    <!-- Research Highlights (Simplified) -->
+    <section id="research" style="padding: 4rem 2.5rem; border-top: 1px solid var(--border);">
+        <div class="section-header reveal-on-scroll" style="margin-bottom: 3rem;">
+            <p class="eyebrow" style="text-align: center;">VALIDATED SCIENCE</p>
+            <h2>Research & Publications</h2>
+        </div>
+        <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+            <a href="https://aclanthology.org/2024.langmol-1.7/" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="paper-card reveal-on-scroll stagger-1" style="background: #0f0f0f; border: 1px solid var(--border); padding: 2rem; max-width: 350px; border-radius: 12px; transition: transform 0.2s;">
+                    <h4 style="margin-bottom: 0.5rem;">ChatMol: Interactive Molecular Discovery</h4>
+                    <p style="color: #666; font-size: 0.9rem;">SOTA interactive molecular analysis framework presented at ACL 2024.</p>
+                    <span style="color: var(--gold-start); font-size: 0.85rem; display: block; margin-top: 1rem;">Read Paper &rarr;</span>
                 </div>
-                <div class="paper-card">
-                    <a href="https://pubs.acs.org/doi/10.1021/acs.jcim.5c02410" target="_blank" class="paper-link">
-                        <img src="png/Pymolfold_paper.png" alt="PymolFold Paper" class="paper-image">
-                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.75rem; text-align: center;">PymolFold: AI-Powered PyMOL Plugin</p>
-                    </a>
+            </a>
+            <a href="https://pubs.acs.org/doi/10.1021/acs.jcim.5c02410" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="paper-card reveal-on-scroll stagger-2" style="background: #0f0f0f; border: 1px solid var(--border); padding: 2rem; max-width: 350px; border-radius: 12px; transition: transform 0.2s;">
+                    <h4 style="margin-bottom: 0.5rem;">PymolFold: AI-Powered PyMOL Plugin</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Seamless integration of ESMFold and Boltz-2 within the PyMOL environment.</p>
+                    <span style="color: var(--gold-start); font-size: 0.85rem; display: block; margin-top: 1rem;">Read Paper &rarr;</span>
                 </div>
-                <div style="background: linear-gradient(135deg, #0f0f0f, #1a1a1a); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; transition: all 0.3s;">
-                    <img src="png/presentation.jpg" alt="ChatMol Presentation" style="width: 100%; border-radius: 10px; border: 1px solid var(--border);">
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.75rem; text-align: center;">ACL 2024 Oral Presentation</p>
-                </div>
-            </div>
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <p>
-                &copy; 2026 ChatMol &middot;
-                <a href="https://github.com/ChatMol">GitHub</a> &middot;
-                <!-- <a href="https://lab.cloudmol.org/">ChatMol Lab</a> -->
-            </p>
-            <p style="color: #555; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.02em;">
-                Built for Researchers · Powered by AI
-            </p>
+    <footer style="border-top: 1px solid var(--border); padding: 4rem 0; margin-top: 4rem; background: #000;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; display: flex; justify-content: space-between; align-items: start;">
+            <div>
+                <a href="/" class="nav-logo" style="margin-bottom: 1rem; display: block;">ChatMol</a>
+                <!-- <p style="color: #666; font-size: 0.9rem; max-width: 300px;">
+                    The AI operating system for molecular biology. Advancing drug discovery through open-source intelligence.
+                </p> -->
+                <div style="margin-top: 1.5rem; font-size: 0.85rem; color: #555;">
+                    &copy; 2026 ChatMol. All rights reserved.
+                </div>
+            </div>
+            <div style="display: flex; gap: 4rem;">
+                <div>
+                    <h4 style="color: #fff; font-size: 0.9rem; margin-bottom: 1rem;">Tools</h4>
+                    <ul style="list-style: none; color: #888; font-size: 0.9rem; line-height: 2;">
+                        <li><a href="https://lab.cloudmol.org/" style="color: inherit; text-decoration: none;">ChatMol Lab</a></li>
+                        <li><a href="https://github.com/ChatMol/ChatMol" style="color: inherit; text-decoration: none;">ChatMol Copilot</a></li>
+                        <li><a href="https://github.com/ChatMol/gromacs_copilot" style="color: inherit; text-decoration: none;">GROMACS Copilot</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #fff; font-size: 0.9rem; margin-bottom: 1rem;">Community</h4>
+                    <ul style="list-style: none; color: #888; font-size: 0.9rem; line-height: 2;">
+                        <li><a href="https://github.com/ChatMol" style="color: inherit; text-decoration: none;">GitHub</a></li>
+                        <!-- <li><a href="#" style="color: inherit; text-decoration: none;">Discord (Soon)</a></li> -->
+                        <li><a href="mailto:contact@cloudmol.org" style="color: inherit; text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Smooth Reveal Animation for Tech Feel
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll, .bento-card, .stat-card, .paper-card').forEach((el) => {
+            el.classList.add('reveal-on-scroll'); // Ensure base class is present
+            observer.observe(el);
+        });
+        
+        // Stagger children in grids for better effect
+        document.querySelectorAll('.bento-grid').forEach(grid => {
+            const children = Array.from(grid.children);
+            children.forEach((child, index) => {
+                child.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Hero Parallax effect for "tech" feel
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const heroGlow = document.querySelector('.hero-glow');
+            if(heroGlow) {
+                heroGlow.style.transform = `translate(-50%, -50%) translateY(${scrolled * 0.5}px)`;
+                heroGlow.style.opacity = 1 - (scrolled / 700);
+            }
+        });
+    </script>
 </body>
 </html>
